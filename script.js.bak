@@ -1,0 +1,102 @@
+// Элементы DOM (удалены passwordEl, copyBtn, generateBtn)
+const lengthEl = document.getElementById('length');
+const lengthValueEl = document.getElementById('lengthValue');
+const uppercaseEl = document.getElementById('uppercase');
+const lowercaseEl = document.getElementById('lowercase');
+const numbersEl = document.getElementById('numbers');
+const symbolsEl = document.getElementById('symbols');
+const generateMultipleBtn = document.getElementById('generateMultipleBtn');
+const multiplePasswordsEl = document.getElementById('multiplePasswords');
+
+// Наборы символов
+const upperLetters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+const lowerLetters = 'abcdefghijklmnopqrstuvwxyz';
+const numbersSet = '0123456789';
+const symbolsSet = '!@#$%^&*()_+-=[]{}|;:,.<>?';
+
+// Обновляем цифру рядом с ползунком длины
+lengthEl.addEventListener('input', () => {
+    lengthValueEl.textContent = lengthEl.value;
+});
+
+// Функция получения случайного символа из строки
+function getRandomChar(fromString) {
+    return fromString[Math.floor(Math.random() * fromString.length)];
+}
+
+// Основная функция генерации пароля
+function generatePassword() {
+    let length = parseInt(lengthEl.value);
+    let charPool = '';
+
+    // Формируем общий пул символов на основе настроек
+    if (uppercaseEl.checked) charPool += upperLetters;
+    if (lowercaseEl.checked) charPool += lowerLetters;
+    if (numbersEl.checked) charPool += numbersSet;
+    if (symbolsEl.checked) charPool += symbolsSet;
+
+    // Если ничего не выбрано, показываем ошибку
+    if (charPool === '') {
+        return 'Выберите хотя бы один тип символов!';
+    }
+
+    // Генерируем пароль
+    let password = '';
+    for (let i = 0; i < length; i++) {
+        password += getRandomChar(charPool);
+    }
+    return password;
+}
+
+// Генерация и отображение 5 паролей
+generateMultipleBtn.addEventListener('click', () => {
+    // Сначала генерируем один, чтобы проверить настройки
+    const firstPassword = generatePassword();
+    if (firstPassword.includes('Выберите')) {
+        // Если ошибка, показываем ее
+        multiplePasswordsEl.style.display = 'block';
+        multiplePasswordsEl.innerHTML = `<div class="password-item" style="color:#ff6b6b">${firstPassword}</div>`;
+        return;
+    }
+
+    multiplePasswordsEl.style.display = 'block';
+    multiplePasswordsEl.innerHTML = '<h3>Сгенерированные пароли:</h3>';
+
+    for (let i = 0; i < 5; i++) {
+        const password = generatePassword();
+        const passwordDiv = document.createElement('div');
+        passwordDiv.className = 'password-item';
+        passwordDiv.innerHTML = `
+            <span>${password}</span>
+            <button class="copy-small" data-password="${password}">Копировать</button>
+        `;
+        multiplePasswordsEl.appendChild(passwordDiv);
+    }
+
+    // Вешаем обработчики на новые кнопки копирования
+    document.querySelectorAll('.copy-small').forEach(button => {
+        button.addEventListener('click', (e) => {
+            const passToCopy = e.target.getAttribute('data-password');
+            copyToClipboard(passToCopy);
+            e.target.textContent = 'Скопировано!';
+            setTimeout(() => {
+                e.target.textContent = 'Копировать';
+            }, 1500);
+        });
+    });
+});
+
+// Функция копирования в буфер обмена (только для маленьких кнопок)
+function copyToClipboard(text) {
+    const textarea = document.createElement('textarea');
+    textarea.value = text;
+    document.body.appendChild(textarea);
+    textarea.select();
+    document.execCommand('copy');
+    document.body.removeChild(textarea);
+}
+
+// Генерируем пароли сразу при загрузке страницы
+window.addEventListener('load', () => {
+    generateMultipleBtn.click();
+});

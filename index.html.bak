@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Генератор сильных паролей</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Иконка для кнопки копирования (используем иконки Font Awesome) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">
+                <i class="fas fa-shield-alt"></i>
+                <h1>Генератор сильных паролей</h1>
+            </div>
+            <p class="subtitle">Создавайте надежные пароли для защиты ваших аккаунтов</p>
+        </div>
+
+        <div class="settings-panel">
+            <h2><i class="fas fa-sliders-h"></i> Настройки генерации</h2>
+            
+            <div class="settings">
+                <div class="setting">
+                    <div class="setting-header">
+                        <label for="length">Длина пароля</label>
+                        <span class="length-value" id="lengthValue">12</span>
+                    </div>
+                    <input type="range" id="length" min="6" max="30" value="12" class="slider">
+                    <div class="length-labels">
+                        <span>6</span>
+                        <span>18</span>
+                        <span>30</span>
+                    </div>
+                </div>
+
+                <div class="checkboxes">
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="uppercase" checked>
+                        <label for="uppercase" class="checkbox-label">
+                            <div class="checkbox-custom">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <span>Заглавные буквы (A-Z)</span>
+                        </label>
+                    </div>
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="lowercase" checked>
+                        <label for="lowercase" class="checkbox-label">
+                            <div class="checkbox-custom">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <span>Строчные буквы (a-z)</span>
+                        </label>
+                    </div>
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="numbers" checked>
+                        <label for="numbers" class="checkbox-label">
+                            <div class="checkbox-custom">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <span>Цифры (0-9)</span>
+                        </label>
+                    </div>
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="symbols" checked>
+                        <label for="symbols" class="checkbox-label">
+                            <div class="checkbox-custom">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <span>Спецсимволы (!@#$%&)</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <button id="generateMultipleBtn" class="generate-btn">
+                <i class="fas fa-key"></i>
+                Сгенерировать 5 паролей
+            </button>
+        </div>
+
+        <div id="multiplePasswords" class="multiple-passwords">
+            <!-- Сюда добавятся сгенерированные пароли -->
+            <div class="passwords-header">
+                <h2><i class="fas fa-lock"></i> Сгенерированные пароли</h2>
+                <p class="hint">Нажмите на пароль, чтобы скопировать</p>
+            </div>
+            <div class="passwords-list">
+                <!-- Пароли появятся здесь -->
+            </div>
+        </div>
+
+        <div class="tips">
+            <div class="tips-header">
+                <i class="fas fa-lightbulb"></i>
+                <h2>Советы по безопасности</h2>
+            </div>
+            <div class="tips-grid">
+                <div class="tip-card">
+                    <div class="tip-icon">
+                        <i class="fas fa-ruler"></i>
+                    </div>
+                    <h3>Длина важна</h3>
+                    <p>Используйте пароли длиной не менее 12 символов для надежной защиты.</p>
+                </div>
+                <div class="tip-card">
+                    <div class="tip-icon">
+                        <i class="fas fa-random"></i>
+                    </div>
+                    <h3>Разнообразие</h3>
+                    <p>Сочетайте разные типы символов для усиления сложности пароля.</p>
+                </div>
+                <div class="tip-card">
+                    <div class="tip-icon">
+                        <i class="fas fa-user-secret"></i>
+                    </div>
+                    <h3>Уникальность</h3>
+                    <p>Не используйте один и тот же пароль на разных сайтах и сервисах.</p>
+                </div>
+                <div class="tip-card">
+                    <div class="tip-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3>Менеджер паролей</h3>
+                    <p>Рассмотрите возможность использования менеджера паролей.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="strength-meter">
+            <h3><i class="fas fa-chart-line"></i> Уровень сложности</h3>
+            <div class="meter">
+                <div class="meter-bar" id="strengthBar"></div>
+            </div>
+            <div class="strength-labels">
+                <span>Слабый</span>
+                <span>Средний</span>
+                <span>Хороший</span>
+                <span>Надежный</span>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <p>Сгенерировано с помощью JavaScript</p>
+            <p class="github-link">
+                <i class="fab fa-github"></i>
+                Исходный код доступен на GitHub
+            </p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

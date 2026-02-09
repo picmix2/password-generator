@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Генератор сильных паролей</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Иконка для кнопки копирования (используем иконки Font Awesome) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1>🔐 Генератор сильных паролей</h1>
+        <p>Создайте надежный пароль для защиты ваших аккаунтов.</p>
+
+        <!-- УДАЛЕН БЛОК result-box -->
+        
+        <div class="settings">
+            <div class="setting">
+                <label for="length">Длина пароля: <span id="lengthValue">12</span></label>
+                <input type="range" id="length" min="6" max="30" value="12">
+            </div>
+
+            <div class="setting">
+                <input type="checkbox" id="uppercase" checked>
+                <label for="uppercase">Заглавные буквы (A-Z)</label>
+            </div>
+            <div class="setting">
+                <input type="checkbox" id="lowercase" checked>
+                <label for="lowercase">Строчные буквы (a-z)</label>
+            </div>
+            <div class="setting">
+                <input type="checkbox" id="numbers" checked>
+                <label for="numbers">Цифры (0-9)</label>
+            </div>
+            <div class="setting">
+                <input type="checkbox" id="symbols" checked>
+                <label for="symbols">Спецсимволы (!@#$%&)</label>
+            </div>
+        </div>
+
+        <!-- УДАЛЕНА КНОПКА generateBtn -->
+        <button id="generateMultipleBtn" class="generate-btn">Сгенерировать 5 паролей</button>
+
+        <div id="multiplePasswords" class="multiple-passwords">
+            <!-- Сюда добавятся несколько паролей -->
+        </div>
+
+        <div class="tips">
+            <h3>💡 Советы по безопасности:</h3>
+            <ul>
+                <li>Используйте длину не менее 12 символов.</li>
+                <li>Сочетайте разные типы символов.</li>
+                <li>Не используйте один и тот же пароль на разных сайтах.</li>
+                <li>Рассмотрите возможность использования менеджера паролей.</li>
+            </ul>
+        </div>
+    </div>
+
+    <footer>
+        Сделано как первый проект на GitHub Pages. Исходный код в репозитории.
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

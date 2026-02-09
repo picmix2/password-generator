@@ -1,0 +1,162 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #1a1a2e, #16213e);
+    color: #f1f1f1;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.container {
+    background-color: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 30px;
+    width: 100%;
+    max-width: 600px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+h1 {
+    color: #6c63ff;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+p {
+    color: #aaa;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* УДАЛЕН СТИЛЬ .result-box и всего, что к нему относится */
+
+.settings {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 25px;
+}
+
+.setting {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.setting:last-child {
+    margin-bottom: 0;
+}
+
+.setting label {
+    flex: 1;
+    cursor: pointer;
+}
+
+input[type="range"] {
+    flex: 1;
+    max-width: 200px;
+    height: 8px;
+    border-radius: 4px;
+    background: #444;
+    outline: none;
+}
+
+input[type="checkbox"] {
+    margin-right: 12px;
+    transform: scale(1.3);
+    accent-color: #6c63ff;
+}
+
+.generate-btn {
+    width: 100%;
+    padding: 18px;
+    background: linear-gradient(to right, #6c63ff, #3a36a0);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    margin-bottom: 15px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.generate-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 7px 15px rgba(108, 99, 255, 0.4);
+}
+
+.generate-btn.secondary {
+    background: linear-gradient(to right, #36a1a0, #2c8584);
+}
+
+.multiple-passwords {
+    margin-top: 25px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 20px;
+    border-radius: 12px;
+    display: none; /* Сначала скрыто */
+}
+
+.password-item {
+    padding: 12px;
+    background: rgba(0, 0, 0, 0.2);
+    margin-bottom: 10px;
+    border-radius: 8px;
+    font-family: monospace;
+    font-size: 1.1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.password-item:last-child {
+    margin-bottom: 0;
+}
+
+.copy-small {
+    background: #444;
+    border: none;
+    color: white;
+    padding: 5px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.tips {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #444;
+}
+
+.tips h3 {
+    color: #6c63ff;
+    margin-bottom: 10px;
+}
+
+.tips ul {
+    padding-left: 20px;
+    color: #ccc;
+}
+
+.tips li {
+    margin-bottom: 8px;
+}
+
+footer {
+    margin-top: 40px;
+    text-align: center;
+    color: #777;
+    font-size: 0.9rem;
+}
